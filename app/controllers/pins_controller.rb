@@ -1,6 +1,8 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  # The following authenticates a user for every page of the application except index and show.
   before_action :authenticate_user!, except: [:index, :show]
+  # Only the correct user can edit, update, delete.
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   respond_to :html
@@ -32,11 +34,13 @@ class PinsController < ApplicationController
 
   #  respond_to do |format|
       if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-        format.json { render :show, status: :created, location: @pin }
+  #      format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+  #      format.json { render :show, status: :created, location: @pin }
+         redirect_to @pin, notice: 'Pin was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
+   #     format.html { render :new }
+   #     format.json { render json: @pin.errors, status: :unprocessable_entity }
+         render action: 'edit'
       end
     end
   end
