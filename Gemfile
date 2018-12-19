@@ -52,6 +52,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise'
+gem 'paperclip', '~> 6.1'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
